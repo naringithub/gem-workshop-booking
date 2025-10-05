@@ -7,14 +7,19 @@ Date: October 4, 2025
 Version: 1.0
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import sqlite3
 import hashlib
 import datetime
 import re
+import os
 
-app = Flask(__name__)
+# Get the parent directory (project root)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FRONTEND_DIR = os.path.join(BASE_DIR, 'frontend')
+
+app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path='')
 CORS(app)  # Enable CORS for frontend
 
 # Database configuration
@@ -53,7 +58,12 @@ def validate_phone(phone):
 
 @app.route('/')
 def index():
-    """API root endpoint"""
+    """Serve the frontend HTML page"""
+    return send_from_directory(FRONTEND_DIR, 'index.html')
+
+@app.route('/api')
+def api_info():
+    """API information endpoint"""
     return jsonify({
         "message": "GEM Coupler Workshop Booking API",
         "version": "1.0",
