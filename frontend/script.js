@@ -6,7 +6,8 @@
  */
 
 // Configuration
-const API_BASE_URL = 'http://localhost:5000/api';
+// Use relative URL so it works in both development and production
+const API_BASE_URL = '/api';
 
 // Global state
 let selectedStation = null;
