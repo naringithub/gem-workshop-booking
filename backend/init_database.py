@@ -79,7 +79,7 @@ def init_database():
     # Insert stations
     print("\n📋 Inserting stations...")
     stations = [
-        ('gem', 'GEM Coupler', 3, 15, 54),
+        ('gem', 'GEM Coupler', 3, 10, 63),
         ('plate', 'OSSEOLAB Plate', 2, 20, 26),
         ('leica', 'Leica Microscope', 1, 20, 13)
     ]
