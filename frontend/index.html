@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEM Coupler Workshop - Booking System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🔬 GEM Coupler Workshop</h1>
+            <p class="tagline">The Future of Surgery is in Your Hands</p>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>ระบบจองสถานี Workshop</h2>
+                <div class="event-info">
+                    <div class="info-item">
+                        <span class="icon">📅</span>
+                        <span class="text">วันที่: 15 ตุลาคม 2025</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">⏰</span>
+                        <span class="text">เวลา: 12:30-17:00 น.</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">📍</span>
+                        <span class="text">สถานที่: โรงพยาบาลรามาธิบดี</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stations Section -->
+    <section class="stations">
+        <div class="container">
+            <h2 class="section-title">เลือกสถานีที่ต้องการ (เลือกได้ 1 สถานี)</h2>
+            
+            <div id="loading" class="loading">กำลังโหลดข้อมูล...</div>
+            
+            <div id="stations-grid" class="stations-grid">
+                <!-- Stations will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 GEM Coupler Workshop. All rights reserved.</p>
+            <p>Powered by Manus AI</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Booking -->
+    <div id="booking-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">จองสถานี</h2>
+            
+            <!-- Step 1: Select Timeslot -->
+            <div id="step-timeslot" class="step">
+                <h3>เลือกช่วงเวลา</h3>
+                <div id="timeslots-container" class="timeslots-container">
+                    <!-- Timeslots will be loaded here -->
+                </div>
+                <button id="next-to-form" class="btn btn-primary" disabled>ถัดไป</button>
+            </div>
+
+            <!-- Step 2: Fill Form -->
+            <div id="step-form" class="step" style="display: none;">
+                <h3>กรอกข้อมูลส่วนตัว</h3>
+                <form id="booking-form">
+                    <div class="form-group">
+                        <label for="name">ชื่อ-นามสกุล *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">อีเมล *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">เบอร์โทร *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="institution">สถาบัน/โรงพยาบาล *</label>
+                        <input type="text" id="institution" name="institution" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="position">ตำแหน่ง *</label>
+                        <select id="position" name="position" required>
+                            <option value="">-- เลือกตำแหน่ง --</option>
+                            <option value="Attending Surgeon">Attending Surgeon</option>
+                            <option value="Fellow">Fellow</option>
+                            <option value="Resident">Resident</option>
+                            <option value="Medical Student">Medical Student</option>
+                            <option value="Nurse">Nurse</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="back-to-timeslot" class="btn btn-secondary">กลับ</button>
+                        <button type="submit" class="btn btn-primary">ยืนยันการจอง</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 3: Confirmation -->
+            <div id="step-confirmation" class="step" style="display: none;">
+                <div class="confirmation-success">
+                    <div class="success-icon">✅</div>
+                    <h3>จองสำเร็จ!</h3>
+                    
+                    <div class="booking-details" id="booking-details">
+                        <!-- Booking details will be shown here -->
+                    </div>
+                    
+                    <div class="qr-code-container">
+                        <img id="qr-code" src="" alt="QR Code">
+                        <p>QR Code สำหรับเช็คอิน</p>
+                    </div>
+                    
+                    <p class="email-notice">✉️ ข้อมูลการจองได้ส่งไปที่อีเมลแล้ว</p>
+                    
+                    <div class="form-actions">
+                        <button id="download-qr" class="btn btn-secondary">ดาวน์โหลด QR Code</button>
+                        <button id="back-to-home" class="btn btn-primary">กลับหน้าแรก</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
